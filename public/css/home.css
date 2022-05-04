@@ -9,7 +9,7 @@
 body{
     background: url(/img/bg.jpg);
     background-size: cover;
-    min-height: 100vh;
+    height: 100vh;
 }
 @keyframes transitionIn{
     from{
@@ -31,110 +31,59 @@ body{
         transform: translateY(0px);
     }
 }
-/*-----Navbar-----*/
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
+/*-----Banner-----*/
+.banner{
+    position: relative;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.6s;
-    padding: 25px 50px;
-    z-index: 2;
-    text-align: left;
+    height: 100vh;
+    background: url(../images/bg.jpg);
+    background-size: cover;
+    animation: upDown 1s;
 }
-header .logo{
-    margin-left: 30px;
-    position: relative;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    font-size: 36px;
-    letter-spacing: 2px;
-    transition: 0.6s;
-}
-header ul{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-header ul li{
-    position: relative;
-    list-style: none;
-}
-header ul li a{
-    padding: 0px 10px;
-    position: relative;
-    margin: 0 15px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.781);
-    letter-spacing: 2px;
-    font-weight: 500px;
-    transition: 0.6s;
-    line-height: 30px;
-}
-.link:after{
-    content: "";
+.banner h1{
+    margin: 0;
     position: absolute;
-    background-color: white;
-    height: 3px;
-    width: 100%;
-    left: 0;
-    bottom: -10px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: 0.3s transform;
-}
-.link:hover:after{
-    transform: scaleX(1);
-    transform-origin: left;
-}
-#current-page{
-    font-weight: 800;
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
+    text-align: center;
+    font-size: 60px;
 }
-header ul li a:hover{
-    transition: 0.2s;
-    color: #fff;
+/*-----Now Showing-----*/
+#carousel{
+    animation: transitionIn 2s;
+    padding: 60px;
+    background: rgb(180, 23, 23);
+    position: relative;
+    width: 60%;
+    height: 56%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: inset 0px 0px 50px rgba(0,0,0,0.9);
 }
-header ul ul{
-    position: absolute;
-    top: 30px;
-    display: none;
+.now-showing{
+    display: relative;
+    font-size: 30px;
+    color: white;
+    text-align: center;
 }
-header ul li:hover > ul{
+.now-showing img{
+    height: 100%;
+    width: 100%;
+}
+.now-showing a{
+    height: 400px;
+    width: 266px;
+    background: black;
     display: block;
-    animation: upDown 0.1s;
-    transition: 0.8s;
+    margin: 0 auto;
+    box-shadow: 9px 8px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 9px 8px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 9px 8px 10px 0px rgba(0,0,0,0.75);
 }
-header .current-page{
-    font-weight: 800;
-    color: white;
-}
-header input[type=text]{
-    float: right;
-    padding: 6px;
-    border: none;
-    border-radius: 10px;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-}
-
-header.sticky{
-    padding: 15px 100px;
-    background: rgb(255, 255, 255);
-}
-header.sticky ul li a{
-    color: #000;
-}
-header.sticky .logo{
-    color: #000;
-}
-header.sticky input[type=text]{
-    background-color: #000;
-    color: #fff;
+.now-showing p{
+    padding-top: 15px;
+    font-size: 24px;
 }
