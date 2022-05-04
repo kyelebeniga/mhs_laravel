@@ -7,18 +7,12 @@
         <h1>Now Showing</h1>
         <div id="carousel">
             <div class="slick">
-                <div class="now-showing">
-                    <a href="#"><img src="{{asset('img/batman.jpg')}}"></a>
-                    <p>The Batman</p>
-                </div>
-                <div class="now-showing">
-                    <a href="#"><img src="{{asset('img/batman.jpg')}}"></a>
-                    <p>The Batman</p>
-                </div>
-                <div class="now-showing">
-                    <a href="#"><img src="{{asset('img/batman.jpg')}}"></a>
-                    <p>The Batman</p>
-                </div>
+                @foreach($movies as $movie)
+                    <div class="now-showing">
+                        <a href="#"><img src="{{ asset('uploaded_img/'.$movie['image']) }}"></a>
+                        <p>{{$movie['title']}}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
