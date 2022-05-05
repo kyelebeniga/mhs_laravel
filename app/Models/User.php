@@ -7,9 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
+    public function setPasswordAttribute($value)
+    {
+        if( Hash::needsRehash($value) ) {
+            $value = Hash::make($value);
+        }
+        $this->attributes['password'] = $value;
+    }
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
