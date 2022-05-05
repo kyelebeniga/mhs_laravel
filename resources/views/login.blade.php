@@ -3,48 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | MHS</title>
+    <title>Login | MHS</title>
     <link rel="stylesheet" href="{{ asset('/css/auth.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head> 
 <body>
     <section class="main">
         <div class="login-container">
-            <h1>Signup</h1>
+            <h1>Login</h1>
             <form class="login">
                 @csrf
                 <input type="text" id="user" name="name" class="user" placeholder="Userame" required>
-                <input type="password" id="pass" name="password" class="pass" placeholder="Password" required>
-                <input type="submit" class="btn" name="submit_login" value="Signup">
-                <p><a href="#">Cancel</a></p>
+                <input type="password" id="pass" name="password" class="password" placeholder="Password" required>
+                <input type="submit" class="btn" name="submit_login" value="Login" id="loginButton">
+                <p>Don't have an account? <a href="#">Signup</a></p>
             </form>
         </div>
     </section>
+    
     <script>
         $(document).ready(function(){
             $('form').on('submit', function(e){
+
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
                 e.preventDefault();
                 var name = $('#user').val();
                 var password = $('#pass').val();
-                var formData = new FormData(this);
-                
+
                 $.ajax({
+                    url: 'userLogin',
                     type: 'POST',
-                    url: 'saveUser',
-                    data: formData,
-                    dataType: 'JSON',
-                    processData: false,
-                    contentType: false,
+                    data:{
+                        name: name,
+                        password: password
+                    },
                     success:function(data){
-                        if(data.exists){
-                            alert("User already exists!");
+                        if(data.success){
+                            alert('Logged in!');
                         }
-                        else if(data.success){
-                            alert("User registered!");
+                        else if(data.error){
+                            alert('Invalid credentials!');
+                            console.log(data);
                         }
                     }
                 });
-            })
+            });
         });
     </script>
 </body>

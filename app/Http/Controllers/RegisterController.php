@@ -20,8 +20,8 @@ class RegisterController extends Controller
         }
         else{
             $user = new User;
-            $user->name = $request['name'];
-            $user->password = bcrypt($request['password']);
+            $user->name = $request->name;
+            $user->password = $request->password;
         }
         $user->save();
         return response()->json(['success' => 'User Registered!']);
