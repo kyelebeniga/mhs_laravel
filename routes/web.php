@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,9 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-Route::get('/', function (){
-    return view('home');
-});
+Route::get('/', 'HomeController@home');
+
+Route::get('register', [RegisterController::class, 'register']);
+Route::post('saveUser', [RegisterController::class, 'saveUser']);
 
 Route::get('/', [MovieController::class, 'show']);
