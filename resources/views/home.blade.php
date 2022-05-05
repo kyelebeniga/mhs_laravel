@@ -1,5 +1,6 @@
 <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
 <title>Home | MHS</title>
+
 @extends('master')
 
 @section('content')
