@@ -44,7 +44,7 @@
                             $.notify('Success!', {position:"top center",className:"success"});
                             setTimeout(function() { 
                                 window.location = "{{ route('login') }}"; 
-                            }, 2000);
+                            }, 1000);
                         }
                     }
                 });

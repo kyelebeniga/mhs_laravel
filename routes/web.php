@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +28,11 @@ Route::post('saveUser', [RegisterController::class, 'saveUser']);
 
 // Auth check
 Route::group(['middleware' => 'auth.user'], function(){
-    // Home page
-    Route::get('/', [HomeController::class, 'home'])->name('home');
-    Route::get('/', [MovieController::class, 'show']); //Shows the data from the movie table
     // Logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-});
+    // Home page
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('/', [MovieController::class, 'home']); //Shows the data from the movie table
+    Route::get('{userMovie}', [MovieController::class, 'show']);
+    Route::get('{adminMovie}', [MovieController::class, 'show']);
+}); 

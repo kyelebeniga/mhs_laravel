@@ -6,6 +6,7 @@
     <title>Login | MHS</title>
     <link rel="stylesheet" href="{{ asset('/css/auth.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/notify.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head> 
 <body>
@@ -48,8 +49,7 @@
                             window.location = "{{ url('/') }}";
                         }
                         else if(data.error){
-                            alert('Invalid credentials!');
-                            console.log(data);
+                            $.notify('Invalid Credentials', {position:"top center"});
                         }
                     }
                 });

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: #080c1c;
+}
+a{
+    text-decoration: none;
+}
+@keyframes upDown{
+    from{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+/*-----Banner-----*/
+.main{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    animation: upDown 0.8s;
+}
+
+/*-----Movies-----*/
+.content{
+    margin: 200px auto;
+    width: 1110px;
+    animation: upDown 0.5s;
+}
+.content h1{
+    color: rgb(243, 243, 243);
+    width: 35%;
+    font-size: 46px;
+    border-bottom: solid 3px;
+    padding-bottom: 20px;
+}
+.column{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+.column > *{
+    margin: 25px auto;
+    margin-bottom: 5px;
+    text-align: center;
+    flex: 0 1 250px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.column img{
+    height: 375px;
+    width: 250px;
+    transition: 0.2s;
+}
+.column a{
+    height: 375px;
+    width: 250px;
+    font-size: 18px;
+    font-weight: 700;
+}
+img:hover{
+    transform: scale(1.2);
+}
+p{
+    background-color: rgba(0, 0, 0, 0.644);
+    transition: 0.2s;
+}
+img:hover ~ p{
+    transform: translateY(-50px);
+    color: white;
+}

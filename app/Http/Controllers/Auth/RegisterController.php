@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 
 class RegisterController extends Controller
 {
     //
     public function register(){
-        return view('register');
+        return view('auth.register');
     }
 
     public function saveUser(Request $request){
