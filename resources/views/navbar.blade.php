@@ -6,10 +6,10 @@
     <ul>
         <li><a href="#" class="link">Home</a></li>
         <li><a href="#" class="link">Movies</a></li>
-        <li><a href="#">Username</a>
+        <li><a href="#">{{ Auth::user()->name }}</a>
             <ul>
                 <li><a href="#" class="link">History</a></li>
-                <li><a href="#" class="link">Logout</a></li>
+                <li><a href="{{ route('logout') }}" class="link">Logout</a></li>
             </ul>
         </li>
     </ul>

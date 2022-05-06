@@ -17,7 +17,7 @@
                 <input type="text" id="user" name="name" class="user" placeholder="Userame" required>
                 <input type="password" id="pass" name="password" class="password" placeholder="Password" required>
                 <input type="submit" class="btn" name="submit_login" value="Login" id="loginButton">
-                <p>Don't have an account? <a href="#">Signup</a></p>
+                <p>Don't have an account? <a href="{{ url('register') }}">Signup</a></p>
             </form>
         </div>
     </section>
@@ -45,7 +45,7 @@
                     },
                     success:function(data){
                         if(data.success){
-                            alert('Logged in!');
+                            window.location = "{{ url('/') }}";
                         }
                         else if(data.error){
                             alert('Invalid credentials!');

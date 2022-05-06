@@ -6,6 +6,7 @@
     <title>Register | MHS</title>
     <link rel="stylesheet" href="{{ asset('/css/auth.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/notify.js') }}"></script>
 </head> 
 <body>
     <section class="main">
@@ -16,7 +17,7 @@
                 <input type="text" id="user" name="name" class="user" placeholder="Userame" required>
                 <input type="password" id="pass" name="password" class="pass" placeholder="Password" required>
                 <input type="submit" class="btn" name="submit_login" value="Signup">
-                <p><a href="#">Cancel</a></p>
+                <p><a href="{{ route('login') }}">Cancel</a></p>
             </form>
         </div>
     </section>
@@ -40,7 +41,10 @@
                             alert("User already exists!");
                         }
                         else if(data.success){
-                            alert("User registered!");
+                            $.notify('Success!', {position:"top center",className:"success"});
+                            setTimeout(function() { 
+                                window.location = "{{ route('login') }}"; 
+                            }, 2000);
                         }
                     }
                 });

@@ -20,4 +20,9 @@ class LoginController extends Controller
             return response()->json(['error' => 'Invalid credentials!']);
         }
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('/login');
+    }
 }

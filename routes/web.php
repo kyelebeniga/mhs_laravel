@@ -16,13 +16,21 @@ use App\Http\Controllers\RegisterController;
 |
 */
 //home route
-Route::get('/', [HomeController::class, 'home'])->name('home');
 
-// auth route
+
+// Login
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('userLogin', [LoginController::class, 'userLogin']);
 
+// Registration
 Route::get('register', [RegisterController::class, 'register']);
 Route::post('saveUser', [RegisterController::class, 'saveUser']);
 
-Route::get('/', [MovieController::class, 'show']);
+// Auth check
+Route::group(['middleware' => 'auth.user'], function(){
+    // Home page
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('/', [MovieController::class, 'show']); //Shows the data from the movie table
+    // Logout
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+});
