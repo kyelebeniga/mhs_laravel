@@ -67,8 +67,8 @@
                 </thead>
                 @foreach($movies as $movie)
                     <tr>
-                        <td><a href="#"><img src="{{ asset('image/'.$movie['image']) }}" height="300" width="200" alt=""></a></td>
-                        <td><a href="#">{{$movie->title}} <br>$ {{$movie->price}} </a></td>
+                        <td><a href="moviepage/{{$movie['id']}}"><img src="{{ asset('image/'.$movie['image']) }}" height="300" width="200" alt=""></a></td>
+                        <td><a href="moviepage/{{$movie['id']}}">{{$movie->title}} <br>$ {{$movie->price}} </a></td>
                         <td class="table-desc-content">{{$movie->description}}</td>
                         <td>
                             <div class="buttons">

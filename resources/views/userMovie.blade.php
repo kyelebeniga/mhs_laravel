@@ -10,7 +10,7 @@
             <div class="column">
                 @foreach($movies as $movie)
                     <div class="column">
-                        <a href="#">
+                        <a href="moviepage/{{$movie['id']}}">
                             <img src="{{ asset('image/'.$movie['image']) }}">
                             <p>{{$movie['title']}}</p>
                         </a>

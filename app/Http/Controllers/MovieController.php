@@ -19,6 +19,13 @@ class MovieController extends Controller
         return view('home', ['movies'=>$data]);
     }
 
+    // Function to display data for an individual movie 
+    public function display($id){
+        $movie = Movie::find($id);
+        return view('moviePage', compact('movie', 'id'));
+    }
+
+    // Creates movie submission
     public function store(Request $request){
         // Uploads image to table
         if($image = $request->file('image')){
@@ -50,6 +57,7 @@ class MovieController extends Controller
         return response()->json(['success'=>'Movie saved successfully.']);
     }
 
+    // Edits movie submission
     public function edit($id){
         $movie = Movie::find($id);
         return response()->json($movie);

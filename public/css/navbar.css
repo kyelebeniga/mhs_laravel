@@ -20,6 +20,7 @@ header{
     transition: 0.6s;
     padding: 25px 50px;
     z-index: 2;
+    background-color: #080c1c;
     text-align: left;
 }
 header .logo{
@@ -85,6 +86,8 @@ header ul li:hover > ul{
     display: block;
     animation: upDown 0.1s;
     transition: 0.8s;
+    background-color: #080c1c;
+    border-radius: 5px;
 }
 header .current-page{
     font-weight: 800;
@@ -106,6 +109,7 @@ header.sticky{
 }
 header.sticky .dropdown{
     background-color: white;
+    border-radius: 5px;
 }
 header.sticky ul li a{
     color: #000;
