@@ -38,7 +38,7 @@
                     contentType: false,
                     success:function(data){
                         if(data.exists){
-                            alert("User already exists!");
+                            $.notify('User already exists', {position:"top center"});
                         }
                         else if(data.success){
                             $.notify('Success!', {position:"top center",className:"success"});

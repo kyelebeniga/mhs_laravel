@@ -104,6 +104,9 @@ header.sticky{
     padding: 15px 100px;
     background: rgb(255, 255, 255);
 }
+header.sticky .dropdown{
+    background-color: white;
+}
 header.sticky ul li a{
     color: #000;
 }

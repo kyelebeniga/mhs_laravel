@@ -12,16 +12,20 @@
         <div class="container">
             <div class="form-popup" id="myForm">
                 <form method="POST" enctype="multipart/form-data" class="form-container" id="movieForm">
-                    <h3 id="formTitle">Add movie</h3>
-                    <input type="text" placeholder="Movie Title" name="title" id="title" class="box">
-                    <input type="text" placeholder="Year" name="year" id="year" class="box">
-                    <input type="text" placeholder="Maturity Rating" name="rating" id="rating" class="box">
-                    <input type="text" placeholder="Description" name="description" id="description" class="box">
-                    <input type="text" placeholder="Duration" name="duration" id="duration" class="box">
-                    <input type="text" placeholder="Price" name="price" id="price" class="box">
+                    @csrf 
+
+                    <h3 id="movieModal">Add movie</h3>
+                    
+                    <input type="hidden" name="id" id="id">
+                    <input type="text" placeholder="Movie Title" name="title" id="title" class="box" required>
+                    <input type="text" placeholder="Year" name="year" id="year" class="box" required>
+                    <input type="text" placeholder="Maturity Rating" name="rating" id="rating" class="box" required>
+                    <input type="text" placeholder="Description" name="description" id="description" class="box" required>
+                    <input type="text" placeholder="Duration" name="duration" id="duration" class="box" required>
+                    <input type="text" placeholder="Price" name="price" id="price" class="box" required>
                     
                     <label for="image" class="imageLabel" id="imageLabel">Upload Poster</label>
-                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="image" id="image">
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="image" id="image" required>
                     <script>
                     //Replaces "Upload Poster" with the file name of the user's uploaded image
                     $('#image').change(function(){
@@ -32,7 +36,7 @@
                     </script>
 
                     <label for="banner" class="bannerLabel" id="bannerLabel">Upload Banner</label>
-                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="banner" id="banner">
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="banner" id="banner" required>
                     <script>
                     //Replaces "Upload Banner" with the file name of the user's uploaded image
                         $('#banner').change(function(){
@@ -41,7 +45,7 @@
                             $(this).prev('label').text(file);
                         });
                         </script>
-                    <input type="submit" class="btn" value="Submit">
+                    <input type="submit" class="btn" value="Submit" id="btnSave">
                     <input type="button" class="btnCancel" onclick="closeForm()" value="Cancel">
                 </form>
             </div>
@@ -63,13 +67,13 @@
                 </thead>
                 @foreach($movies as $movie)
                     <tr>
-                        <td><a href="#"><img src="{{ asset('uploaded_img/'.$movie['image']) }}" height="300" width="200" alt=""></a></td>
+                        <td><a href="#"><img src="{{ asset('image/'.$movie['image']) }}" height="300" width="200" alt=""></a></td>
                         <td><a href="#">{{$movie->title}} <br>$ {{$movie->price}} </a></td>
                         <td class="table-desc-content">{{$movie->description}}</td>
                         <td>
                             <div class="buttons">
-                                <a href="#" class="btn"><i class="fas fa-edit"></i>Edit</a>
-                                <button class="deleteBtn"><i class="fas fa-trash"></i>Delete</button>
+                                <a href="javascript:void(0)" class="btn" data-id="{{ $movie->id }}"><i class="fas fa-edit"></i>Edit</a>
+                                <button href="javascript:void(0)" class="deleteBtn" data-id="{{ $movie->id }}"><i class="fas fa-trash"></i>Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -77,6 +81,72 @@
             </table>
         </div>
     </section>
+
+    {{-- AJAX script --}}
+    <script>
+         $(document).ready(function(){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Creates Movie submission
+            $('form').on('submit', function(e){
+                e.preventDefault();
+
+                $.ajax({
+                    url: '{{ route('movies.store') }}',
+                    type: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(data){
+                        $(".movie-table").load(location.href + " .movie-table");
+                        $.notify('Success!', {position:"bottom right",className:"success"});
+                        closeForm();
+                    }
+                });
+            })
+
+            //AJAX Update
+            $('body').on('click', '.btn', function(){
+                var id = $(this).data('id');
+                openForm();
+                $.get("{{ route('movies.index') }}" + '/' + id + '/edit', function(res){
+                    $('#movieModal').html('Edit Movie');
+                    $('#btnSave').val('Edit Movie');
+                    $('#id').val(res.id);
+                    $('#title').val(res.title);
+                    $('#year').val(res.year);
+                    $('#rating').val(res.rating);
+                    $('#description').val(res.description);
+                    $('#duration').val(res.duration);
+                    $('#price').val(res.price);
+                });
+            });
+
+            // AJAX Delete
+            $('body').on('click', '.deleteBtn', function (e) {
+                var id = $(this).data('id');
+                e.preventDefault();
+                
+                $.ajax({
+                    url: "{{ route('movies.store') }}"+'/'+id,                                                   
+                    type: 'DELETE',                                  
+                    success:function(res){
+                        $(".movie-table").load(location.href + " .movie-table");
+                        $.notify('Movie deleted.', {position:"bottom right"});
+                    },
+                    error: function (res) {
+                        console.log('Error:', res);
+                    }
+                });
+            });
+        });
+    </script>
 
     <script>
         function openForm(){

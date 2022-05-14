@@ -10,7 +10,7 @@
             <div class="slick">
                 @foreach($movies as $movie)
                     <div class="now-showing">
-                        <a href="#"><img src="{{ asset('uploaded_img/'.$movie['image']) }}"></a>
+                        <a href="#"><img src="{{ asset('image/'.$movie['image']) }}"></a>
                         <p>{{$movie['title']}}</p>
                     </div>
                 @endforeach

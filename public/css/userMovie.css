@@ -31,6 +31,7 @@ a{
     height: 100vh;
     background-size: cover;
     animation: upDown 0.8s;
+    overflow: hidden;
 }
 
 /*-----Movies-----*/
