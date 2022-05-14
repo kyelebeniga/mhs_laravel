@@ -128,7 +128,7 @@ body{
     position: absolute;
     bottom: 0;
 }
-.form-container .btn, .btn-cancel {
+.form-container .btn, .btnCancel {
     background-color: #04AA6D;
     color: white;
     padding: 16px 20px;
@@ -138,7 +138,7 @@ body{
     width: 150px;
     height: 50px;
 }
-.form-container .btn-cancel{
+.form-container .btnCancel{
     margin-left: 50px;
     background-color: red;
 }
@@ -219,11 +219,10 @@ body{
 .movie-table .deleteBtn:hover{
     opacity: 0.9;
 }
-#image-file, #image-banner,
-#image-file2, #image-banner2{
+#image, #banner{
     display: none;
 }
-.image-label, .image-label2{
+.imageLabel, .bannerLabel{
     color: rgb(126, 126, 126);
     width: 100%;
     display: block;
@@ -247,7 +246,7 @@ body{
     position: fixed;
     z-index: 9;
 }
-.form-update .btn-cancel{
+.form-update .btnCancel{
     background-color: red;
     color: white;
     padding: 16px 20px;

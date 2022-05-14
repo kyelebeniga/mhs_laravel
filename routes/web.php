@@ -33,6 +33,9 @@ Route::group(['middleware' => 'auth.user'], function(){
     // Home page
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/', [MovieController::class, 'home']); //Shows the data from the movie table
-    Route::get('{userMovie}', [MovieController::class, 'show']);
-    Route::get('{adminMovie}', [MovieController::class, 'show']);
+    Route::get('{userMovie}', [MovieController::class, 'index']);
+    Route::get('{adminMovie}', [MovieController::class, 'index']);
 }); 
+
+// Movie Controller
+Route::resource('movies', MovieController::class);
