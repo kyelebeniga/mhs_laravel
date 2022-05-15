@@ -9,6 +9,7 @@
 body{
     background: url(/img/bg.jpg);
     background-size: cover;
+    background-color: #080c1c;
     height: 100vh;
 }
 @keyframes transitionIn{

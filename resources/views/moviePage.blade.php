@@ -16,7 +16,7 @@
             <img src="{{ asset('image/'.$movie['image']) }}" alt="" class="movie-poster" height="300" width="200">
             <h1>{{ $movie->title }}</h1>
             <p>{{ $movie->rating }} | {{ $movie->year }} | {{ $movie->duration }}</p>
-            <a href="#" class="btn"><i class="fa-solid fa-cart-shopping"></i> {{ $movie->price }}</a>
+            <a href="/ticket/{{$movie['id']}}" class="btn"><i class="fa-solid fa-cart-shopping"></i> {{ $movie->price }}</a>
             <h1>Synposis: </h1>
             <p class="movie-desc">{{ $movie->description }}</p>
         </div>

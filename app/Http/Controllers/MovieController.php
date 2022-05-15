@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use Illuminate\Support\Facades\File; 
+use App\Models\Ticket;
 
 class MovieController extends Controller
 {
@@ -23,6 +24,17 @@ class MovieController extends Controller
     public function display($id){
         $movie = Movie::find($id);
         return view('moviePage', compact('movie', 'id'));
+    }
+
+    public function ticketDisplay($id){
+        $movie = Movie::find($id);
+        $ticket = Ticket::find($id);
+        return view('ticket', compact(['movie', 'ticket']));
+    }
+
+    public function trial(){              
+        $ticketing = Ticket::all();
+        return view('ticket', compact('ticketing'));                          
     }
 
     // Creates movie submission

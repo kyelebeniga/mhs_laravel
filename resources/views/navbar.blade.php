@@ -12,7 +12,11 @@
         @endif
         <li><a href="#">{{ Auth::user()->name }}</a>
             <ul class="dropdown">
-                <li><a href="#" class="link">History</a></li>
+                @if(Auth::user()->role == '1')
+                    <li><a href="#" class="link">History</a></li>
+                @else
+                    <li><a href="{{ url('userhistory') }}" class="link">History</a></li>
+                @endif
                 <li><a href="{{ route('logout') }}" class="link">Logout</a></li>
             </ul>
         </li>

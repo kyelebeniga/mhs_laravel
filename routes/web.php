@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\TicketController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,13 +32,24 @@ Route::post('saveUser', [RegisterController::class, 'saveUser']);
 Route::group(['middleware' => 'auth.user'], function(){
     // Logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
     // Home page
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/', [MovieController::class, 'home']); //Shows the data from the movie table
-    Route::get('/moviepage/{id}', [MovieController::class, 'display']); //Displays particular movie page
+
+    // Movie Pages for user and admin
     Route::get('{userMovie}', [MovieController::class, 'index']);
     Route::get('{adminMovie}', [MovieController::class, 'index']);
+    Route::get('/moviepage/{id}', [MovieController::class, 'display']); //Displays particular movie page
+
+    Route::get('/userhistory', function () {    //  !! TEST CODE !! //
+        return 'userhistory';                   //  !! TEST CODE !! //
+    });                                         //  !! TEST CODE !! //
+
+    // Purchase ticket page for user
+    Route::get('/ticket/{id}', [MovieController::class, 'ticketDisplay']);
+    Route::post('/ticketpurchase', [TicketController::class, 'store'])->name('ticketpurchase');
 }); 
 
-// Movie Controller
+// Resources
 Route::resource('movies', MovieController::class);
