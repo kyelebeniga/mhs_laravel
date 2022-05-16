@@ -1,3 +1,8 @@
 <title>History | MHS</title>
+<link href="{{ asset('/css/userhistory.css') }}" rel="stylesheet">
+@extends('master')
 
-<h1>USER HISTORY PAGE</h1>
+@section('content')
+    <div class="main">
+        <p>{{$history->username}}</p>
+@endsection

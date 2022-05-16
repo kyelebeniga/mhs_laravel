@@ -42,13 +42,12 @@ Route::group(['middleware' => 'auth.user'], function(){
     Route::get('{adminMovie}', [MovieController::class, 'index']);
     Route::get('/moviepage/{id}', [MovieController::class, 'display']); //Displays particular movie page
 
-    Route::get('/userhistory', function () {    //  !! TEST CODE !! //
-        return 'userhistory';                   //  !! TEST CODE !! //
-    });                                         //  !! TEST CODE !! //
-
     // Purchase ticket page for user
     Route::get('/ticket/{id}', [MovieController::class, 'ticketDisplay']);
     Route::post('/ticketpurchase', [TicketController::class, 'store'])->name('ticketpurchase');
+
+    //History page
+    Route::get('/userhistory', [TicketController::class, 'history']);
 }); 
 
 // Resources

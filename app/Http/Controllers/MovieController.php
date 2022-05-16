@@ -28,8 +28,9 @@ class MovieController extends Controller
 
     public function ticketDisplay($id){
         $movie = Movie::find($id);
+        $seat = Ticket::where('movieid', '=', $id)->pluck('seat')->toArray();
         $ticket = Ticket::find($id);
-        return view('ticket', compact(['movie', 'ticket']));
+        return view('ticket', compact(['movie', 'ticket', 'seat']));
     }
 
     public function trial(){              

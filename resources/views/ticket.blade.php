@@ -18,7 +18,9 @@
                 <select name="seat" id="seats">
                     <option value=""></option>
                         @for($i=1;$i<=50;$i++)
-                            <option value="{{$i}}">{{$i}}</option>
+                            @if(!in_array($i, $seat))
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endif
                         @endfor
                     {{-- @for($i=1;$i<=50;$i++)
                         @if(!in_array($i, $ticket->seat))
