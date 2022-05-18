@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Movie;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -16,10 +17,13 @@ class TicketController extends Controller
 
     public function history(){
         $user = Auth::user()->name;
-        $history = Ticket::where('name', '=', $user)->all();
-        $movie = Movie::all();
 
-        return view('userhistory', compact(['history, movie']));
+        $tickets = Ticket::join('movie', 'movie.id', '=', 'tickets.movieid')
+                    ->where('tickets.username', '=', $user)
+                    ->get();
+
+
+        return view('userhistory', compact(['tickets']));
     }
 
     //Function to buy the ticket

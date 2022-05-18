@@ -105,17 +105,11 @@ header input[type=text]{
 
 header.sticky{
     padding: 15px 100px;
-    background: rgb(255, 255, 255);
+    background-color: #121d47;
 }
 header.sticky .dropdown{
-    background-color: white;
+    background-color: #121d47;
     border-radius: 5px;
-}
-header.sticky ul li a{
-    color: #000;
-}
-header.sticky .logo{
-    color: #000;
 }
 header.sticky input[type=text]{
     background-color: #000;

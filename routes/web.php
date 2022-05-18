@@ -17,8 +17,6 @@ use App\Http\Controllers\TicketController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//home route
-
 
 // Login
 Route::get('login', [LoginController::class, 'login'])->name('login');
@@ -30,13 +28,17 @@ Route::post('saveUser', [RegisterController::class, 'saveUser']);
 
 // Auth check
 Route::group(['middleware' => 'auth.user'], function(){
+    
     // Logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+    //History page
+    Route::get('/userhistory', [TicketController::class, 'history']);
+    
     // Home page
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('/', [MovieController::class, 'home']); //Shows the data from the movie table
-
+    
     // Movie Pages for user and admin
     Route::get('{userMovie}', [MovieController::class, 'index']);
     Route::get('{adminMovie}', [MovieController::class, 'index']);
@@ -46,8 +48,7 @@ Route::group(['middleware' => 'auth.user'], function(){
     Route::get('/ticket/{id}', [MovieController::class, 'ticketDisplay']);
     Route::post('/ticketpurchase', [TicketController::class, 'store'])->name('ticketpurchase');
 
-    //History page
-    Route::get('/userhistory', [TicketController::class, 'history']);
+    
 }); 
 
 // Resources

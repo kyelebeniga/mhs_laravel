@@ -22,11 +22,6 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endif
                         @endfor
-                    {{-- @for($i=1;$i<=50;$i++)
-                        @if(!in_array($i, $ticket->seat))
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endif
-                    @endfor --}}
                 </select>
                 <div class="buttons">
                     <input type="submit" id="{{ $movie->id }}" class="btn" name="purchase" value="Purchase">

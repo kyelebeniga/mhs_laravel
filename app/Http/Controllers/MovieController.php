@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use Illuminate\Support\Facades\File; 
 use App\Models\Ticket;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
