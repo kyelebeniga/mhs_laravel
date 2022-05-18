@@ -1,8 +1,21 @@
 body{
     background-color: #080c1c;
 }
+.container{
+    margin-top: 200px;
+    position: relative;
+}
+
+.history{
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+    left: 50%;
+    text-align: center;
+}
 
 .main{
+    margin: 50px 0px;
     width: 100%;
     height: auto;
     display: flex;
@@ -10,7 +23,6 @@ body{
     justify-content: center;
     position: relative;
     flex-wrap: wrap;
-    margin-top: 200px;
     gap: 50px;
 }
 
@@ -19,8 +31,11 @@ body{
     padding: 10px;
     margin: 0px 500px;
     flex: 0 1 40%;
-    border: 1px solid blue;
     flex-direction: column;
+    background-color: #091130;
+    box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.68);
+    -webkit-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.68);
+    -moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.68);
 }
 
 .main img{
@@ -32,9 +47,13 @@ body{
     color: white;
     float: left;
     height: 100%;
-    width: 60%;
+    width: 80%;
 }
 .title{
     font-size: 20px;
     font-weight: 600;
+}
+
+.additional{
+    float: right;
 }

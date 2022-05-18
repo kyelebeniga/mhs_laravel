@@ -26,6 +26,13 @@ class TicketController extends Controller
         return view('userhistory', compact(['tickets']));
     }
 
+    public function adminhistory(){
+        $tickets = Ticket::join('movie', 'movie.id', '=', 'tickets.movieid')
+                    ->get();
+
+        return view('adminhistory', compact(['tickets']));
+    }
+
     //Function to buy the ticket
     public function store(Request $request){
         Ticket::create([
