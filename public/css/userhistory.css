@@ -1,8 +1,25 @@
 body{
-    background-color: #080c1c;
+    background-color: #15171f;
+}
+/* Navbar */
+header{
+    background-color: #15171f !important;
+}
+
+header.sticky{
+    padding: 15px 100px;
+    background-color: #15171f !important;
+}
+
+header.sticky .dropdown{
+    background-color: #15171f !important;
+    border-radius: 5px;
+}
+header ul li:hover > ul{
+    background-color: #15171f !important;
 }
 .container{
-    margin-top: 200px;
+    margin-top: 100px;
     position: relative;
 }
 
@@ -32,10 +49,11 @@ body{
     margin: 0px 500px;
     flex: 0 1 40%;
     flex-direction: column;
-    background-color: #091130;
-    box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.68);
-    -webkit-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.68);
-    -moz-box-shadow: 0px 0px 17px 6px rgba(0,0,0,0.68);
+    background-color: #201c24;
+    box-shadow: 0px 0px 97px -18px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 97px -18px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 97px -18px rgba(0,0,0,0.75);
+    border-radius: 12px;
 }
 
 .main img{
@@ -44,10 +62,16 @@ body{
 }
 
 .main .info{
-    color: white;
+    color: rgb(233, 233, 233);
+    position: relative;
     float: left;
     height: 100%;
     width: 80%;
+}
+.date{
+    position: absolute;
+    transform: translateY(45px);
+
 }
 .title{
     font-size: 20px;
@@ -55,5 +79,6 @@ body{
 }
 
 .additional{
+    padding-top: 45px;
     float: right;
 }

@@ -13,7 +13,7 @@
         <li><a href="#">{{ Auth::user()->name }}</a>
             <ul class="dropdown">
                 @if(Auth::user()->role == '1')
-                    <li><a href="#" class="link">History</a></li>
+                    <li><a href="{{ url('adminhistory') }}" class="link">History</a></li>
                 @else
                     <li><a href="{{ url('userhistory') }}" class="link">History</a></li>
                 @endif

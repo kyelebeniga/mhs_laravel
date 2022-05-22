@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth.user'], function(){
 
     //History page
     Route::get('/userhistory', [TicketController::class, 'history']);
+    Route::get('/adminhistory', [TicketController::class, 'adminhistory']);
     
     // Home page
     Route::get('/', [HomeController::class, 'home'])->name('home');

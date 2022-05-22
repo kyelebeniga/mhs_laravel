@@ -35,7 +35,7 @@
                     });
                     </script>
 
-                    <label for="banner" class="bannerLabel" id="bannerLabel">Upload Banner</label>
+                    <label for="banner" class="bannerLabel" id="bannerLabel">Upload Banner (1920x550)</label>
                     <input type="file" accept="image/png, image/jpeg, image/jpg" name="banner" id="banner" required>
                     <script>
                     //Replaces "Upload Banner" with the file name of the user's uploaded image
