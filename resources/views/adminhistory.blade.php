@@ -6,10 +6,10 @@
     <div class="container">
         <div class="history-table">
             <div class="counter">
-                <span>Total tickets: </span>
+                <span>Tickets sold: </span>
                 <span id="target"></span>
             </div>
-            <table id="tbl">
+            <table id="tbl" class="table table-sortable">
                 <thead>
                     <tr>
                         <th style="width:10%">Ticket ID</th>
@@ -41,32 +41,5 @@
             </div>
         </div>
     </div>
-
-    {{-- Script for Table --}}
-    <script>
-        /**
-         * Sorts the HTML table
-         * 
-         * @param {HTMLTableElement} table  | The table to sort
-         * @param {number} column           | Index of column to sort
-         * @param {boolean} asc             | Determines if sorting will be in ascending or descending order
-         * 
-         */
-        // function sortTableByColumn(table, column, asc = true){
-        //     const  
-        // }
-        
-        // Get total number of tickets
-        var table = document.getElementById("tbl");
-        var rowCount = table.tBodies[0].rows.length;
-        $("#target").text(rowCount);
-
-        // Total of tickets sold
-        var sumVal = 0;
-        for(var i=1;i<table.rows.length;i++){
-            sumVal = sumVal + parseFloat(table.rows[i].cells[6].innerHTML);
-        }
-        console.log(sumVal);
-        $("#totalprice").text('$' + sumVal);
-    </script>
+    <script src="{{ asset('js/table.js') }}"></script>
 @endsection

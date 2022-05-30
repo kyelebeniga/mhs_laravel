@@ -13,7 +13,7 @@
                         <p class="title">{{ $ticket->title }}</p>
                         <p class="rating">{{ $ticket->year }} | {{ $ticket->rating }}</p>
                         <p class="rating">{{ $ticket->duration }}</p>
-                        <p class="date">Date Purchased: <br>{{ $ticket->created_at->format('d M Y - H:i A') }}</p>
+                        <p class="date">Date Purchased: <br>{{ $ticket->created_at->format('d M Y - g:i A') }}</p>
                         <div class="additional">
                             <p>Seat#: {{ $ticket->seat }}</p>
                             <p>Price: ${{ $ticket->price }}</p>

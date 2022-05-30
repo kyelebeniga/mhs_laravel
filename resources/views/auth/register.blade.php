@@ -14,7 +14,7 @@
             <h1>Signup</h1>
             <form class="login">
                 @csrf
-                <input type="text" id="user" name="name" class="user" placeholder="Userame" required>
+                <input type="text" id="user" name="name" class="user" placeholder="Username" required>
                 <input type="password" id="pass" name="password" class="pass" placeholder="Password" required>
                 <input type="submit" class="btn" name="submit_login" value="Signup">
                 <p><a href="{{ route('login') }}">Cancel</a></p>

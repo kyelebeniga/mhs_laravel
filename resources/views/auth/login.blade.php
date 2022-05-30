@@ -15,7 +15,7 @@
             <h1>Login</h1>
             <form class="login">
                 @csrf
-                <input type="text" id="user" name="name" class="user" placeholder="Userame" required>
+                <input type="text" id="user" name="name" class="user" placeholder="Username" required>
                 <input type="password" id="pass" name="password" class="password" placeholder="Password" required>
                 <input type="submit" class="btn" name="submit_login" value="Login" id="loginButton">
                 <p>Don't have an account? <a href="{{ url('register') }}">Signup</a></p>
